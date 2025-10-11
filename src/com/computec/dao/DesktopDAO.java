@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesktopDAO {
-    public void crear(Desktop desktop) {
+    public void insertar(Desktop desktop) {
         String sql = "{CALL sp_desktop_insertar(?, ?, ?)}";
 
         try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
