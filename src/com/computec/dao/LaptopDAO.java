@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LaptopDAO {
-    public void crear(Laptop laptop) {
+    public void insertar(Laptop laptop) {
         String sql = "{CALL sp_laptop_insertar(?, ?, ?, ?)}";
 
         try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
