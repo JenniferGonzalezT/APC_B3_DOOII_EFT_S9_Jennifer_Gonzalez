@@ -9,6 +9,7 @@ public class DescuentoPromocion20 extends DescuentoBase {
     
     @Override
     public double aplicarDescuento(Equipo equipo) {
-        return equipo.getPrecio() * 0.80;
+        double precioBase = super.aplicarDescuento(equipo);
+        return precioBase * 0.80;
     }
 }

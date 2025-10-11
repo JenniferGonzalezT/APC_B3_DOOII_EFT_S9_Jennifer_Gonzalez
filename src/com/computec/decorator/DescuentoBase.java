@@ -15,6 +15,9 @@ public abstract class DescuentoBase implements Descuento {
     
     @Override
     public double aplicarDescuento(Equipo equipo) {
+        if (descuento != null) {
+            return descuento.aplicarDescuento(equipo);
+        }
         return equipo.getPrecio();
     }
 }
