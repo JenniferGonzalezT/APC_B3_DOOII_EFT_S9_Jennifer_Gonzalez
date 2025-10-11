@@ -66,7 +66,7 @@ public class ClienteDAO {
         }
     }
     
-    public void eliminarCliente(String rut) {
+    public void eliminar(String rut) {
         String sql = "{CALL sp_cliente_eliminar(?)}";
 
         try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
