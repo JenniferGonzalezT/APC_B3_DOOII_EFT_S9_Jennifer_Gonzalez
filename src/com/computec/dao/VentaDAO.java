@@ -11,7 +11,7 @@ import java.util.List;
 
 // DatabaseConnection.getInstance().getConnection()
 public class VentaDAO {
-    public void crear(Venta venta) {
+    public void insertar(Venta venta) {
         String sql = "{CALL sp_venta_insertar(?, ?)}";
 
         try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
