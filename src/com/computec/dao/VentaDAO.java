@@ -6,7 +6,6 @@ import com.computec.modelo.Equipo;
 import com.computec.modelo.Venta;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
