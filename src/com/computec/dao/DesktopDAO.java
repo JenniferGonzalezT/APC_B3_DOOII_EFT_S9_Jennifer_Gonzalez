@@ -1,5 +1,4 @@
 package com.computec.dao;
-// DatabaseConnection.getInstance().getConnection()
 
 import com.computec.database.DatabaseConnection;
 import com.computec.modelo.Desktop;
