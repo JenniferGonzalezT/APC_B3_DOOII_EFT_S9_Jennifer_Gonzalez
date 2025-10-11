@@ -9,7 +9,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// DatabaseConnection.getInstance().getConnection()
 public class VentaDAO {
     public void insertar(Venta venta) {
         String sql = "{CALL sp_venta_insertar(?, ?)}";
