@@ -1,18 +1,18 @@
 package com.computec.command;
 
-import com.computec.dao.EquipoDAO;
+import com.computec.controlador.EquipoControlador;
 
 public class EliminarEquipoCommand implements Command {
-    private final EquipoDAO equipoDAO;
+    private final EquipoControlador equipoControlador;
     private final int idEquipo;
 
-    public EliminarEquipoCommand(EquipoDAO equipoDAO, int idEquipo) {
-        this.equipoDAO = equipoDAO;
+    public EliminarEquipoCommand(EquipoControlador equipoControlador, int idEquipo) {
+        this.equipoControlador = equipoControlador;
         this.idEquipo = idEquipo;
     }
 
     @Override
     public void execute() {
-        equipoDAO.eliminar(idEquipo);
+        equipoControlador.eliminar(idEquipo);
     }
 }
