@@ -1,13 +1,92 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.computec.dao;
 
-/**
- *
- * @author Jennifer
- */
+import com.computec.database.DatabaseConnection;
+import com.computec.modelo.Cliente;
+import com.computec.modelo.Equipo;
+import com.computec.modelo.Venta;
+
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+// DatabaseConnection.getInstance().getConnection()
 public class VentaDAO {
+    public void crear(Venta venta) {
+        String sql = "{CALL sp_venta_insertar(?, ?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+            cs.setString(1, venta.getCliente().getRutCliente());
+            cs.setInt(2, venta.getEquipo().getIdEquipo());
+
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al crear venta: " + e.getMessage(), e);
+        }
+    }
     
+    public List<Venta> listar() {
+        List<Venta> ventas = new ArrayList<>();
+        String sql = "{CALL sp_venta_listar()}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql);
+             ResultSet rs = cs.executeQuery()) {
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setNombreCompleto(rs.getString("cliente"));
+                cliente.setRutCliente(rs.getString("rut_cliente"));
+
+                Equipo equipo = new Equipo();
+                equipo.setModelo(rs.getString("equipo"));
+                equipo.setPrecio(rs.getDouble("precio"));
+
+                Venta venta = new Venta(
+                        cliente,
+                        equipo,
+                        rs.getTimestamp("fecha_venta").toLocalDateTime()
+                );
+                venta.setIdVenta(rs.getInt("id_venta"));
+
+                ventas.add(venta);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al listar ventas: " + e.getMessage(), e);
+        }
+        return ventas;
+    }
+    
+    public void actualizar(Venta venta) {
+        String sql = "{CALL sp_venta_actualizar(?, ?, ?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+            cs.setInt(1, venta.getIdVenta());
+            cs.setString(2, venta.getCliente().getRutCliente());
+            cs.setInt(3, venta.getEquipo().getIdEquipo());
+
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al actualizar venta: " + e.getMessage(), e);
+        }
+    }
+    
+    public void eliminar(int idVenta) {
+        String sql = "{CALL sp_venta_eliminar(?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+            cs.setInt(1, idVenta);
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar venta: " + e.getMessage(), e);
+        }
+    }
+    
+    public Venta buscarVentaPorId(int idVenta) {
+        for (Venta v : listar()) {
+            if (v.getIdVenta() == idVenta) {
+                return v;
+            }
+        }
+        return null;
+    }
 }
