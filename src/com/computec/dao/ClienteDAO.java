@@ -86,14 +86,4 @@ public class ClienteDAO {
         }
         return null;
     }
-
-    public List<Cliente> buscarClientesPorNombre(String nombre) {
-        List<Cliente> resultado = new ArrayList<>();
-        for (Cliente c : listar()) {
-            if (c.getNombreCompleto().toLowerCase().contains(nombre.toLowerCase())) {
-                resultado.add(c);
-            }
-        }
-        return resultado;
-    }
 }

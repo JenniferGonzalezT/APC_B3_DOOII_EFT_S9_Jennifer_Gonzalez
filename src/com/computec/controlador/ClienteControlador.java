@@ -26,8 +26,4 @@ public class ClienteControlador {
     public Cliente buscarClientePorRut(String rut) {
         return dao.buscarClientePorRut(rut);
     }
-    
-    public List<Cliente> buscarClientesPorNombre(String nombre) {
-        return dao.buscarClientesPorNombre(nombre);
-    }
 }

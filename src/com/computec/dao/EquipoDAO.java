@@ -87,14 +87,4 @@ public class EquipoDAO {
         }
         return null;
     }
-    
-    public List<Equipo> buscarEquiposPorModelo(String modelo) {
-        List<Equipo> resultado = new ArrayList<>();
-        for (Equipo e : listar()) {
-            if (e.getModelo().toLowerCase().contains(modelo.toLowerCase())) {
-                resultado.add(e);
-            }
-        }
-        return resultado;
-    }
 }

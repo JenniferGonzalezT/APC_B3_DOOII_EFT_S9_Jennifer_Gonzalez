@@ -315,10 +315,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel_FormCliente" max="32767" attributes="0"/>
                               <Component id="jPanel_BotonesClientes" max="32767" attributes="0"/>
+                              <Component id="jPanel_FormCliente" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jScrollPane_TablaClientes" min="-2" pref="301" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnInicioClientes" min="-2" pref="40" max="-2" attributes="0"/>
@@ -413,7 +413,6 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="etqRutCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtRutCliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -443,7 +442,7 @@
                                   <Component id="etqTelefonoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTelefonoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="etqCamposCliente" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -597,7 +596,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnBuscarNombreCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnLimpiarCliente" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnBuscarRutCliente1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnListarCliente" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnEliminarCliente" alignment="0" max="32767" attributes="0"/>
@@ -621,8 +620,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscarRutCliente1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnBuscarNombreCliente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnLimpiarCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="7" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -763,7 +762,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarRutCliente1ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBuscarNombreCliente">
+                    <Component class="javax.swing.JButton" name="btnLimpiarCliente">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="99" green="33" red="0" type="rgb"/>
@@ -774,7 +773,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="BUSCAR NOMBRE"/>
+                        <Property name="text" type="java.lang.String" value="LIMPIAR CAMPOS"/>
                         <Property name="horizontalTextPosition" type="int" value="0"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[170, 35]"/>
@@ -787,7 +786,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarNombreClienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarClienteActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1197,7 +1196,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="90" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnBuscarModeloEquipo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnLimpiarEquipo" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnBuscarIdEquipo" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnListarEquipo" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnEliminarEquipo" alignment="0" max="32767" attributes="0"/>
@@ -1222,7 +1221,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscarIdEquipo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnBuscarModeloEquipo" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLimpiarEquipo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1364,7 +1363,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarIdEquipoActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBuscarModeloEquipo">
+                    <Component class="javax.swing.JButton" name="btnLimpiarEquipo">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="99" green="33" red="0" type="rgb"/>
@@ -1375,7 +1374,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="BUSCAR MODELO"/>
+                        <Property name="text" type="java.lang.String" value="LIMPIAR CAMPOS"/>
                         <Property name="horizontalTextPosition" type="int" value="0"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[170, 35]"/>
@@ -1388,7 +1387,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarModeloEquipoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarEquipoActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

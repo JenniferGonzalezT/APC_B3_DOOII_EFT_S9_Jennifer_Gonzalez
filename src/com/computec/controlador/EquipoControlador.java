@@ -26,8 +26,4 @@ public class EquipoControlador {
     public Equipo buscarEquipoPorId(int idEquipo) {
         return dao.buscarEquipoPorId(idEquipo);
     }
-    
-    public List<Equipo> buscarEquiposPorModelo(String modelo) {
-        return dao.buscarEquiposPorModelo(modelo);
-    }
 }

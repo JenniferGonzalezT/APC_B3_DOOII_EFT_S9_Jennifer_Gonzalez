@@ -74,7 +74,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnEliminarCliente = new javax.swing.JButton();
         btnListarCliente = new javax.swing.JButton();
         btnBuscarRutCliente1 = new javax.swing.JButton();
-        btnBuscarNombreCliente = new javax.swing.JButton();
+        btnLimpiarCliente = new javax.swing.JButton();
         jPanel_Equipos = new javax.swing.JPanel();
         jPanel_PrincipalEquipos = new javax.swing.JPanel();
         btnInicioEquipos = new javax.swing.JButton();
@@ -102,7 +102,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnEliminarEquipo = new javax.swing.JButton();
         btnListarEquipo = new javax.swing.JButton();
         btnBuscarIdEquipo = new javax.swing.JButton();
-        btnBuscarModeloEquipo = new javax.swing.JButton();
+        btnLimpiarEquipo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestión Computec");
@@ -318,7 +318,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_FormClienteLayout.setVerticalGroup(
             jPanel_FormClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_FormClienteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel_FormClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqRutCliente)
                     .addComponent(txtRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -342,7 +341,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_FormClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqTelefonoCliente)
                     .addComponent(txtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(etqCamposCliente))
         );
 
@@ -443,17 +442,17 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarNombreCliente.setBackground(new java.awt.Color(0, 51, 153));
-        btnBuscarNombreCliente.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
-        btnBuscarNombreCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarNombreCliente.setText("BUSCAR NOMBRE");
-        btnBuscarNombreCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarNombreCliente.setMaximumSize(new java.awt.Dimension(170, 35));
-        btnBuscarNombreCliente.setMinimumSize(new java.awt.Dimension(170, 35));
-        btnBuscarNombreCliente.setPreferredSize(new java.awt.Dimension(170, 35));
-        btnBuscarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiarCliente.setBackground(new java.awt.Color(0, 51, 153));
+        btnLimpiarCliente.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnLimpiarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiarCliente.setText("LIMPIAR CAMPOS");
+        btnLimpiarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLimpiarCliente.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarCliente.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarCliente.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnLimpiarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarNombreClienteActionPerformed(evt);
+                btnLimpiarClienteActionPerformed(evt);
             }
         });
 
@@ -464,7 +463,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel_BotonesClientesLayout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addGroup(jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscarNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarRutCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -485,8 +484,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarRutCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel_PrincipalClientesLayout = new javax.swing.GroupLayout(jPanel_PrincipalClientes);
@@ -511,9 +510,9 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PrincipalClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_PrincipalClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_FormCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_BotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel_BotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_FormCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane_TablaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInicioClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -775,17 +774,17 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarModeloEquipo.setBackground(new java.awt.Color(0, 51, 153));
-        btnBuscarModeloEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
-        btnBuscarModeloEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarModeloEquipo.setText("BUSCAR MODELO");
-        btnBuscarModeloEquipo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarModeloEquipo.setMaximumSize(new java.awt.Dimension(170, 35));
-        btnBuscarModeloEquipo.setMinimumSize(new java.awt.Dimension(170, 35));
-        btnBuscarModeloEquipo.setPreferredSize(new java.awt.Dimension(170, 35));
-        btnBuscarModeloEquipo.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiarEquipo.setBackground(new java.awt.Color(0, 51, 153));
+        btnLimpiarEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnLimpiarEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiarEquipo.setText("LIMPIAR CAMPOS");
+        btnLimpiarEquipo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLimpiarEquipo.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarEquipo.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarEquipo.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnLimpiarEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarModeloEquipoActionPerformed(evt);
+                btnLimpiarEquipoActionPerformed(evt);
             }
         });
 
@@ -796,7 +795,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesEquiposLayout.createSequentialGroup()
                 .addContainerGap(90, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscarModeloEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpiarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarIdEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -818,7 +817,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarIdEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarModeloEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimpiarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -919,23 +918,9 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
-    private void btnBuscarNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNombreClienteActionPerformed
-        String nombre = txtRutCliente.getText().trim();
-
-        List<Cliente> lista = clienteControlador.buscarClientesPorNombre(nombre);
-        
-        if (lista.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No se han encontrado coincidencias.");
-        } else {
-            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
-            modelo.setRowCount(0);
-
-            for (Cliente c : lista) {
-                modelo.addRow(new Object[]{c.getRutCliente(), c.getNombreCompleto(), 
-                    c.getDireccion(), c.getComuna(), c.getTelefono(), c.getCorreo()});
-            }
-        }
-    }//GEN-LAST:event_btnBuscarNombreClienteActionPerformed
+    private void btnLimpiarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarClienteActionPerformed
+        limpiarCamposCliente();
+    }//GEN-LAST:event_btnLimpiarClienteActionPerformed
 
     private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
         try {
@@ -958,12 +943,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         String rut = txtRutCliente.getText().trim();
-        int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar cliente con RUT " + rut + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        
+        if (rut == null || rut.isBlank()) {
+            JOptionPane.showMessageDialog(this, "El rut no puede estar vacío.");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar cliente con RUT " + rut + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
 
-        if (confirm == JOptionPane.YES_OPTION) {
-            clienteControlador.eliminar(rut);
-            JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
-            limpiarCamposCliente();
+            if (confirm == JOptionPane.YES_OPTION) {
+                clienteControlador.eliminar(rut);
+                JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
+                limpiarCamposCliente();
+            }
         }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
@@ -1026,9 +1016,9 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarIdEquipoActionPerformed
 
-    private void btnBuscarModeloEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarModeloEquipoActionPerformed
+    private void btnLimpiarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarEquipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarModeloEquipoActionPerformed
+    }//GEN-LAST:event_btnLimpiarEquipoActionPerformed
 
     private void cmbCategoriaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaEquipoActionPerformed
         // TODO add your handling code here:
@@ -1077,8 +1067,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarEquipo;
     private javax.swing.JButton btnBuscarIdEquipo;
-    private javax.swing.JButton btnBuscarModeloEquipo;
-    private javax.swing.JButton btnBuscarNombreCliente;
     private javax.swing.JButton btnBuscarRutCliente1;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEditarCliente;
@@ -1088,6 +1076,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEquipos;
     private javax.swing.JButton btnInicioClientes;
     private javax.swing.JButton btnInicioEquipos;
+    private javax.swing.JButton btnLimpiarCliente;
+    private javax.swing.JButton btnLimpiarEquipo;
     private javax.swing.JButton btnListarCliente;
     private javax.swing.JButton btnListarEquipo;
     private javax.swing.JButton btnReportes;
