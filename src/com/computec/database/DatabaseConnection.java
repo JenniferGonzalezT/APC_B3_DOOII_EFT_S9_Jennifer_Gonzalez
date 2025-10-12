@@ -45,4 +45,15 @@ public final class DatabaseConnection {
     public Connection getConnection() {
         return connection;
     }
+    
+    public static String estadoConexion() {        
+        try {
+            if (instance == null || instance.getConnection() == null || instance.getConnection().isClosed()) {
+                instance = new DatabaseConnection();
+            }
+            return "¡Conexión exitosa con la Base de Datos!";
+        } catch (SQLException e) {
+            return "Ha ocurrido un problema al conectar con la Base de Datos: " + e.getMessage();
+        }
+    }
 }

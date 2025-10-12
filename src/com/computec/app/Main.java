@@ -1,5 +1,6 @@
 package com.computec.app;
 
+import com.computec.database.DatabaseConnection;
 import com.computec.vista.MainJFrame;
 import javax.swing.SwingUtilities;
 
@@ -13,8 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
         // Probar la conexión con la base de datos
-        
-        
+        //System.out.println(DatabaseConnection.estadoConexion());
+
         // Iniciar la interfaz gráfica
         SwingUtilities.invokeLater(() -> {
             MainJFrame ventana = new MainJFrame();

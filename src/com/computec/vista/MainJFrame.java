@@ -2,6 +2,7 @@ package com.computec.vista;
 
 import com.computec.command.*;
 import com.computec.controlador.*;
+import com.computec.database.DatabaseConnection;
 import com.computec.modelo.*;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,6 +24,13 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         setLocationRelativeTo(null);
+        estadoConexionDB();
+        cmbCategoriaEquipo.setSelectedIndex(-1);
+    }
+    
+    private void estadoConexionDB() {
+        JOptionPane.showMessageDialog(this, DatabaseConnection.estadoConexion(), 
+                "Conexión a la Base de Datos", JOptionPane.INFORMATION_MESSAGE);
     }
     
     private void limpiarCamposCliente() {
@@ -41,7 +49,11 @@ public class MainJFrame extends javax.swing.JFrame {
         txtDiscoDuroEquipo.setText("");
         txtRamEquipo.setText("");
         txtPrecioEquipo.setText("");
-        cmbCategoriaEquipo.setSelectedIndex(0);        
+        cmbCategoriaEquipo.setSelectedIndex(-1);        
+    }
+    
+    private void limpiarCamposVenta() {
+               
     }
 
     /**
@@ -86,7 +98,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnEditarCliente = new javax.swing.JButton();
         btnEliminarCliente = new javax.swing.JButton();
         btnListarCliente = new javax.swing.JButton();
-        btnBuscarRutCliente1 = new javax.swing.JButton();
+        btnBuscarRutCliente = new javax.swing.JButton();
         btnLimpiarCliente = new javax.swing.JButton();
         jPanel_Equipos = new javax.swing.JPanel();
         jPanel_PrincipalEquipos = new javax.swing.JPanel();
@@ -116,6 +128,29 @@ public class MainJFrame extends javax.swing.JFrame {
         btnListarEquipo = new javax.swing.JButton();
         btnBuscarIdEquipo = new javax.swing.JButton();
         btnLimpiarEquipo = new javax.swing.JButton();
+        jPanel_Ventas = new javax.swing.JPanel();
+        jPanel_PrincipalVentas = new javax.swing.JPanel();
+        btnInicioVenta = new javax.swing.JButton();
+        jPanel_FormVentas = new javax.swing.JPanel();
+        etqRutVenta = new javax.swing.JLabel();
+        etqNombreVenta = new javax.swing.JLabel();
+        etqEquipoVenta = new javax.swing.JLabel();
+        etqIdVenta = new javax.swing.JLabel();
+        txtRutVenta = new javax.swing.JTextField();
+        txtNombreVenta = new javax.swing.JTextField();
+        txtEquipoVenta = new javax.swing.JTextField();
+        txtIdVenta = new javax.swing.JTextField();
+        etqFechaVenta = new javax.swing.JLabel();
+        txtFechaVenta = new javax.swing.JTextField();
+        jScrollPane_TablaVentas = new javax.swing.JScrollPane();
+        tblClientes1 = new javax.swing.JTable();
+        jPanel_BotonesVentas = new javax.swing.JPanel();
+        btnAgregarVenta = new javax.swing.JButton();
+        btnEditarVenta = new javax.swing.JButton();
+        btnEliminarVenta = new javax.swing.JButton();
+        btnListarVentas = new javax.swing.JButton();
+        btnBuscarRutVenta = new javax.swing.JButton();
+        btnLimpiarVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestión Computec");
@@ -441,17 +476,17 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarRutCliente1.setBackground(new java.awt.Color(0, 51, 153));
-        btnBuscarRutCliente1.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
-        btnBuscarRutCliente1.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarRutCliente1.setText("BUSCAR RUT");
-        btnBuscarRutCliente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarRutCliente1.setMaximumSize(new java.awt.Dimension(170, 35));
-        btnBuscarRutCliente1.setMinimumSize(new java.awt.Dimension(170, 35));
-        btnBuscarRutCliente1.setPreferredSize(new java.awt.Dimension(170, 35));
-        btnBuscarRutCliente1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarRutCliente.setBackground(new java.awt.Color(0, 51, 153));
+        btnBuscarRutCliente.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnBuscarRutCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarRutCliente.setText("BUSCAR RUT");
+        btnBuscarRutCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscarRutCliente.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutCliente.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutCliente.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarRutCliente1ActionPerformed(evt);
+                btnBuscarRutClienteActionPerformed(evt);
             }
         });
 
@@ -477,7 +512,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(86, 86, 86)
                 .addGroup(jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarRutCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarRutCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -495,7 +530,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarRutCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarRutCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(7, Short.MAX_VALUE))
@@ -591,7 +626,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         etqCamposEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
         etqCamposEquipo.setForeground(new java.awt.Color(153, 153, 153));
-        etqCamposEquipo.setText("* Todos los campos son obligatorios para Agregar (menos ID) y Editar.");
+        etqCamposEquipo.setText("* Todos los campos menos ID son obligatorios para Agregar.");
 
         txtModeloEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
         txtModeloEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -686,8 +721,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_FormEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqCategoriaEquipo)
                     .addComponent(cmbCategoriaEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(etqCamposEquipo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqCamposEquipo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane_TablaEquipos.setBackground(new java.awt.Color(255, 255, 255));
@@ -878,6 +914,289 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane_PanelPrincipal.addTab("Equipos", jPanel_Equipos);
 
+        jPanel_PrincipalVentas.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnInicioVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnInicioVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 18)); // NOI18N
+        btnInicioVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicioVenta.setText("Ir al Inicio");
+        btnInicioVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInicioVenta.setMaximumSize(new java.awt.Dimension(130, 40));
+        btnInicioVenta.setMinimumSize(new java.awt.Dimension(130, 40));
+        btnInicioVenta.setPreferredSize(new java.awt.Dimension(130, 40));
+        btnInicioVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioVentaActionPerformed(evt);
+            }
+        });
+
+        jPanel_FormVentas.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel_FormVentas.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Datos Venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Eras Medium ITC", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel_FormVentas.setForeground(new java.awt.Color(255, 255, 255));
+
+        etqRutVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqRutVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqRutVenta.setText("RUT Cliente");
+
+        etqNombreVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqNombreVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqNombreVenta.setText("Nombre Cliente");
+
+        etqEquipoVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqEquipoVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqEquipoVenta.setText("Equipo");
+
+        etqIdVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqIdVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqIdVenta.setText("ID Venta");
+
+        txtNombreVenta.setEditable(false);
+
+        txtEquipoVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEquipoVentaActionPerformed(evt);
+            }
+        });
+
+        etqFechaVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqFechaVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqFechaVenta.setText("Fecha Venta");
+
+        javax.swing.GroupLayout jPanel_FormVentasLayout = new javax.swing.GroupLayout(jPanel_FormVentas);
+        jPanel_FormVentas.setLayout(jPanel_FormVentasLayout);
+        jPanel_FormVentasLayout.setHorizontalGroup(
+            jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(etqIdVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqEquipoVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqNombreVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(etqRutVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etqFechaVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIdVenta)
+                    .addComponent(txtNombreVenta)
+                    .addComponent(txtEquipoVenta)
+                    .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
+                        .addComponent(txtRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtFechaVenta))
+                .addGap(122, 122, 122))
+        );
+        jPanel_FormVentasLayout.setVerticalGroup(
+            jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etqRutVenta)
+                    .addComponent(txtRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etqNombreVenta)
+                    .addComponent(txtNombreVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etqEquipoVenta)
+                    .addComponent(txtEquipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etqIdVenta)
+                    .addComponent(txtIdVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etqFechaVenta)
+                    .addComponent(txtFechaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        jScrollPane_TablaVentas.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane_TablaVentas.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane_TablaVentas.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
+
+        tblClientes1.setBackground(new java.awt.Color(255, 255, 255));
+        tblClientes1.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
+        tblClientes1.setForeground(new java.awt.Color(0, 0, 0));
+        tblClientes1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Venta", "Fecha", "Nombre cliente", "RUT cliente", "Modelo", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane_TablaVentas.setViewportView(tblClientes1);
+
+        jPanel_BotonesVentas.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnAgregarVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnAgregarVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnAgregarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarVenta.setText("AGREGAR");
+        btnAgregarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgregarVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnAgregarVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnAgregarVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnAgregarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarVentaActionPerformed(evt);
+            }
+        });
+
+        btnEditarVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnEditarVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnEditarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarVenta.setText("EDITAR");
+        btnEditarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditarVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnEditarVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnEditarVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnEditarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarVentaActionPerformed(evt);
+            }
+        });
+
+        btnEliminarVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnEliminarVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarVenta.setText("ELIMINAR");
+        btnEliminarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnEliminarVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnEliminarVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarVentaActionPerformed(evt);
+            }
+        });
+
+        btnListarVentas.setBackground(new java.awt.Color(0, 51, 153));
+        btnListarVentas.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnListarVentas.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarVentas.setText("LISTAR");
+        btnListarVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnListarVentas.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnListarVentas.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnListarVentas.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnListarVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarVentasActionPerformed(evt);
+            }
+        });
+
+        btnBuscarRutVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnBuscarRutVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnBuscarRutVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarRutVenta.setText("BUSCAR CLIENTE POR RUT");
+        btnBuscarRutVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscarRutVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnBuscarRutVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarRutVentaActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnLimpiarVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnLimpiarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiarVenta.setText("LIMPIAR CAMPOS");
+        btnLimpiarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLimpiarVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnLimpiarVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnLimpiarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarVentaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_BotonesVentasLayout = new javax.swing.GroupLayout(jPanel_BotonesVentas);
+        jPanel_BotonesVentas.setLayout(jPanel_BotonesVentasLayout);
+        jPanel_BotonesVentasLayout.setHorizontalGroup(
+            jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(btnListarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
+        );
+        jPanel_BotonesVentasLayout.setVerticalGroup(
+            jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
+                .addComponent(btnAgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel_PrincipalVentasLayout = new javax.swing.GroupLayout(jPanel_PrincipalVentas);
+        jPanel_PrincipalVentas.setLayout(jPanel_PrincipalVentasLayout);
+        jPanel_PrincipalVentasLayout.setHorizontalGroup(
+            jPanel_PrincipalVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_PrincipalVentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_PrincipalVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane_TablaVentas)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PrincipalVentasLayout.createSequentialGroup()
+                        .addComponent(jPanel_FormVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel_BotonesVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PrincipalVentasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnInicioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel_PrincipalVentasLayout.setVerticalGroup(
+            jPanel_PrincipalVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PrincipalVentasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_PrincipalVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel_BotonesVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_FormVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane_TablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInicioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel_VentasLayout = new javax.swing.GroupLayout(jPanel_Ventas);
+        jPanel_Ventas.setLayout(jPanel_VentasLayout);
+        jPanel_VentasLayout.setHorizontalGroup(
+            jPanel_VentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel_PrincipalVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel_VentasLayout.setVerticalGroup(
+            jPanel_VentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel_PrincipalVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jTabbedPane_PanelPrincipal.addTab("Clientes", jPanel_Ventas);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -982,7 +1301,7 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnListarClienteActionPerformed
 
-    private void btnBuscarRutCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRutCliente1ActionPerformed
+    private void btnBuscarRutClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRutClienteActionPerformed
         String rut = txtRutCliente.getText().trim();
         Cliente cliente = clienteControlador.buscarClientePorRut(rut);
 
@@ -995,7 +1314,7 @@ public class MainJFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
         }
-    }//GEN-LAST:event_btnBuscarRutCliente1ActionPerformed
+    }//GEN-LAST:event_btnBuscarRutClienteActionPerformed
 
     private void txtDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionClienteActionPerformed
         // TODO add your handling code here:
@@ -1124,6 +1443,45 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtModeloEquipoActionPerformed
 
+    private void btnInicioVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicioVentaActionPerformed
+
+    private void btnAgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarVentaActionPerformed
+
+    private void btnEditarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarVentaActionPerformed
+
+    private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarVentaActionPerformed
+
+    private void btnListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarVentasActionPerformed
+
+    private void btnBuscarRutVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRutVentaActionPerformed
+        String rut = txtRutVenta.getText().trim();
+        Cliente cliente = clienteControlador.buscarClientePorRut(rut);
+
+        if (cliente != null) {
+            txtNombreVenta.setText(cliente.getNombreCompleto());
+        } else {
+            JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
+        }
+    }//GEN-LAST:event_btnBuscarRutVentaActionPerformed
+
+    private void btnLimpiarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarVentaActionPerformed
+
+    private void txtEquipoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEquipoVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEquipoVentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1162,20 +1520,27 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarEquipo;
+    private javax.swing.JButton btnAgregarVenta;
     private javax.swing.JButton btnBuscarIdEquipo;
-    private javax.swing.JButton btnBuscarRutCliente1;
+    private javax.swing.JButton btnBuscarRutCliente;
+    private javax.swing.JButton btnBuscarRutVenta;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEditarCliente;
     private javax.swing.JButton btnEditarEquipo;
+    private javax.swing.JButton btnEditarVenta;
     private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JButton btnEliminarEquipo;
+    private javax.swing.JButton btnEliminarVenta;
     private javax.swing.JButton btnEquipos;
     private javax.swing.JButton btnInicioClientes;
     private javax.swing.JButton btnInicioEquipos;
+    private javax.swing.JButton btnInicioVenta;
     private javax.swing.JButton btnLimpiarCliente;
     private javax.swing.JButton btnLimpiarEquipo;
+    private javax.swing.JButton btnLimpiarVenta;
     private javax.swing.JButton btnListarCliente;
     private javax.swing.JButton btnListarEquipo;
+    private javax.swing.JButton btnListarVentas;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVentas;
     private javax.swing.JComboBox<Categoria> cmbCategoriaEquipo;
@@ -1188,40 +1553,56 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel etqCpuEquipo;
     private javax.swing.JLabel etqDireccionCliente;
     private javax.swing.JLabel etqDiscoDuroEquipo;
+    private javax.swing.JLabel etqEquipoVenta;
+    private javax.swing.JLabel etqFechaVenta;
     private javax.swing.JLabel etqIdEquipo;
+    private javax.swing.JLabel etqIdVenta;
     private javax.swing.JLabel etqModeloEquipo;
     private javax.swing.JLabel etqNombreCliente;
+    private javax.swing.JLabel etqNombreVenta;
     private javax.swing.JLabel etqPrecioEquipo;
     private javax.swing.JLabel etqRamEquipo;
     private javax.swing.JLabel etqRutCliente;
+    private javax.swing.JLabel etqRutVenta;
     private javax.swing.JLabel etqTelefonoCliente;
     private javax.swing.JPanel jPanel_Bienvenida;
     private javax.swing.JPanel jPanel_Botones;
     private javax.swing.JPanel jPanel_BotonesClientes;
     private javax.swing.JPanel jPanel_BotonesEquipos;
+    private javax.swing.JPanel jPanel_BotonesVentas;
     private javax.swing.JPanel jPanel_Clientes;
     private javax.swing.JPanel jPanel_Equipos;
     private javax.swing.JPanel jPanel_FormCliente;
     private javax.swing.JPanel jPanel_FormEquipo;
+    private javax.swing.JPanel jPanel_FormVentas;
     private javax.swing.JPanel jPanel_Inicio;
     private javax.swing.JPanel jPanel_PrincipalClientes;
     private javax.swing.JPanel jPanel_PrincipalEquipos;
+    private javax.swing.JPanel jPanel_PrincipalVentas;
+    private javax.swing.JPanel jPanel_Ventas;
     private javax.swing.JScrollPane jScrollPane_TablaClientes;
     private javax.swing.JScrollPane jScrollPane_TablaEquipos;
+    private javax.swing.JScrollPane jScrollPane_TablaVentas;
     private javax.swing.JTabbedPane jTabbedPane_PanelPrincipal;
     private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblClientes1;
     private javax.swing.JTable tblEquipos;
     private javax.swing.JTextField txtComunaCliente;
     private javax.swing.JTextField txtCorreoCliente;
     private javax.swing.JTextField txtCpuEquipo;
     private javax.swing.JTextField txtDireccionCliente;
     private javax.swing.JTextField txtDiscoDuroEquipo;
+    private javax.swing.JTextField txtEquipoVenta;
+    private javax.swing.JTextField txtFechaVenta;
     private javax.swing.JTextField txtIdEquipo;
+    private javax.swing.JTextField txtIdVenta;
     private javax.swing.JTextField txtModeloEquipo;
     private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtNombreVenta;
     private javax.swing.JTextField txtPrecioEquipo;
     private javax.swing.JTextField txtRamEquipo;
     private javax.swing.JTextField txtRutCliente;
+    private javax.swing.JTextField txtRutVenta;
     private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }
