@@ -81,11 +81,28 @@ public class EquipoDAO {
     }
     
     public Equipo buscarEquipoPorId(int idEquipo) {
-        for (Equipo e : listar()) {
-            if (e.getIdEquipo() == idEquipo) {
-                return e;
+        Equipo equipo = null;
+        String sql = "{CALL sp_equipo_buscar_por_id (?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setInt(1, idEquipo);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    equipo = new Equipo();
+                    equipo.setIdEquipo(rs.getInt("id_equipo"));
+                    equipo.setModelo(rs.getString("modelo"));
+                    equipo.setCpu(rs.getString("cpu"));
+                    equipo.setDiscoDuroMb(rs.getInt("disco_duro_mb"));
+                    equipo.setRamGb(rs.getInt("ram_gb"));
+                    equipo.setPrecio(rs.getDouble("precio"));
+                    equipo.setCategoria(Categoria.fromString(rs.getString("categoria")));
+                }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ID Equipo: " + e.getMessage());
         }
-        return null;
+        return equipo;
     }
 }

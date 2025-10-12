@@ -80,11 +80,28 @@ public class LaptopDAO {
     }
     
     public Laptop buscarLaptopPorId(int idEquipo) {
-        for (Laptop l : listar()) {
-            if (l.getIdEquipo() == idEquipo) {
-                return l;
+        Laptop laptop = null;
+        String sql = "{CALL sp_laptop_buscar_por_id (?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setInt(1, idEquipo);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    laptop = new Laptop();
+                    laptop.setIdEquipo(rs.getInt("id_equipo"));
+                    laptop.setModelo(rs.getString("modelo"));
+                    laptop.setCpu(rs.getString("cpu"));
+                    laptop.setDiscoDuroMb(rs.getInt("disco_duro_mb"));
+                    laptop.setRamGb(rs.getInt("ram_gb"));
+                    laptop.setPrecio(rs.getDouble("precio"));
+                    laptop.setCategoria(Categoria.fromString(rs.getString("categoria")));
+                }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ID Laptop: " + e.getMessage());
         }
-        return null;
+        return laptop;
     }
 }

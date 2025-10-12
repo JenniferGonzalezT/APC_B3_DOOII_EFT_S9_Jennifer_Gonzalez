@@ -76,11 +76,30 @@ public class DesktopDAO {
     }
     
     public Desktop buscarDesktopPorId(int idEquipo) {
-        for (Desktop d : listar()) {
-            if (d.getIdEquipo() == idEquipo) {
-                return d;
+        Desktop desktop = null;
+        String sql = "{CALL sp_desktop_buscar_por_id (?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setInt(1, idEquipo);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    desktop = new Desktop();
+                    desktop.setIdEquipo(rs.getInt("id_equipo"));
+                    desktop.setModelo(rs.getString("modelo"));
+                    desktop.setCpu(rs.getString("cpu"));
+                    desktop.setDiscoDuroMb(rs.getInt("disco_duro_mb"));
+                    desktop.setRamGb(rs.getInt("ram_gb"));
+                    desktop.setPrecio(rs.getDouble("precio"));
+                    desktop.setCategoria(Categoria.fromString(rs.getString("categoria")));
+                    desktop.setPotenciaFuente(rs.getInt("potencia_fuente"));
+                    desktop.setFactorForma(rs.getString("factor_forma"));
+                }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ID Desktop: " + e.getMessage());
         }
-        return null;
+        return desktop;
     }
 }

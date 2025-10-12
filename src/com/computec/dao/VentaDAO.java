@@ -80,11 +80,34 @@ public class VentaDAO {
     }
     
     public Venta buscarVentaPorId(int idVenta) {
-        for (Venta v : listar()) {
-            if (v.getIdVenta() == idVenta) {
-                return v;
+        Venta venta = null;
+        String sql = "{CALL sp_venta_buscar_por_id (?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setInt(1, idVenta);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    Cliente cliente = new Cliente();
+                    cliente.setNombreCompleto(rs.getString("cliente"));
+                    cliente.setRutCliente(rs.getString("rut_cliente"));
+
+                    Equipo equipo = new Equipo();
+                    equipo.setModelo(rs.getString("equipo"));
+                    equipo.setPrecio(rs.getDouble("precio"));
+
+                    venta = new Venta(
+                            cliente,
+                            equipo,
+                            rs.getTimestamp("fecha_venta").toLocalDateTime()
+                    );
+                    venta.setIdVenta(rs.getInt("id_venta"));
+                }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ID Venta: " + e.getMessage());
         }
-        return null;
+        return venta;
     }
 }

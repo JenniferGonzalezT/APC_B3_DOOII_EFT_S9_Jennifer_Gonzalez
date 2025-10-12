@@ -78,12 +78,27 @@ public class ClienteDAO {
     }
     
     public Cliente buscarClientePorRut(String rut) {
-        List<Cliente> clientes = listar();
-        for (Cliente c : clientes) {
-            if (c.getRutCliente().equalsIgnoreCase(rut)) {
-                return c;
+        Cliente cliente = null;
+        String sql = "{CALL sp_cliente_buscar_por_rut(?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setString(1, rut);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    cliente = new Cliente();
+                    cliente.setRutCliente(rs.getString("rut_cliente"));
+                    cliente.setNombreCompleto(rs.getString("nombre_completo"));
+                    cliente.setDireccion(rs.getString("direccion"));
+                    cliente.setComuna(rs.getString("comuna"));
+                    cliente.setCorreo(rs.getString("correo"));
+                    cliente.setTelefono(rs.getString("telefono"));
+                }
             }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar cliente por RUT: " + e.getMessage());
         }
-        return null;
+        return cliente;
     }
 }
