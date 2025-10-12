@@ -1177,7 +1177,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addComponent(jPanel_PrincipalVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane_PanelPrincipal.addTab("Clientes", jPanel_Ventas);
+        jTabbedPane_PanelPrincipal.addTab("Ventas", jPanel_Ventas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
