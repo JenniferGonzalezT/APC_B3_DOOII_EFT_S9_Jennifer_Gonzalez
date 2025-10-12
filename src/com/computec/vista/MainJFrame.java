@@ -73,7 +73,6 @@ public class MainJFrame extends javax.swing.JFrame {
         btnClientes = new javax.swing.JButton();
         btnEquipos = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
-        btnReportes = new javax.swing.JButton();
         jPanel_Clientes = new javax.swing.JPanel();
         jPanel_PrincipalClientes = new javax.swing.JPanel();
         btnInicioClientes = new javax.swing.JButton();
@@ -223,28 +222,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnReportes.setBackground(new java.awt.Color(0, 51, 153));
-        btnReportes.setFont(new java.awt.Font("Eras Demi ITC", 0, 18)); // NOI18N
-        btnReportes.setForeground(new java.awt.Color(255, 255, 255));
-        btnReportes.setText("Ir a Reportes");
-        btnReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnReportes.setMaximumSize(new java.awt.Dimension(170, 60));
-        btnReportes.setMinimumSize(new java.awt.Dimension(170, 60));
-        btnReportes.setPreferredSize(new java.awt.Dimension(170, 60));
-        btnReportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel_BotonesLayout = new javax.swing.GroupLayout(jPanel_Botones);
         jPanel_Botones.setLayout(jPanel_BotonesLayout);
         jPanel_BotonesLayout.setHorizontalGroup(
             jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesLayout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,15 +237,13 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesLayout.setVerticalGroup(
             jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesLayout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+                .addContainerGap(207, Short.MAX_VALUE)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149))
+                .addGap(189, 189, 189))
         );
 
         javax.swing.GroupLayout jPanel_InicioLayout = new javax.swing.GroupLayout(jPanel_Inicio);
@@ -1223,10 +1205,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jTabbedPane_PanelPrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_btnClientesActionPerformed
 
-    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        jTabbedPane_PanelPrincipal.setSelectedIndex(4);
-    }//GEN-LAST:event_btnReportesActionPerformed
-
     private void btnInicioClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioClientesActionPerformed
         jTabbedPane_PanelPrincipal.setSelectedIndex(0);
     }//GEN-LAST:event_btnInicioClientesActionPerformed
@@ -1541,7 +1519,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnListarCliente;
     private javax.swing.JButton btnListarEquipo;
     private javax.swing.JButton btnListarVentas;
-    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVentas;
     private javax.swing.JComboBox<Categoria> cmbCategoriaEquipo;
     private javax.swing.JLabel etqBienvenida;
