@@ -18,7 +18,7 @@ public class Venta {
     }
 
     public Venta(int idVenta, Cliente cliente, Equipo equipo, LocalDateTime fechaVenta) {
-        this.idVenta = idVenta;
+        this.idVenta = validarId(idVenta);
         this.cliente = validarCliente(cliente);
         this.equipo = validarEquipo(equipo);
         this.fechaVenta = validarFecha(fechaVenta);
@@ -29,7 +29,7 @@ public class Venta {
     }
 
     public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+        this.idVenta = validarId(idVenta);
     }
 
     public Cliente getCliente() {
@@ -87,5 +87,12 @@ public class Venta {
             throw new IllegalArgumentException("La fecha de la venta no puede ser futura.");
         }
         return fecha;
+    }
+    
+    private int validarId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID de la venta debe ser un número positivo.");
+        }
+        return id;
     }
 }

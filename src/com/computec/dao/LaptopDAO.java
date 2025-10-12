@@ -1,6 +1,7 @@
 package com.computec.dao;
 
 import com.computec.database.DatabaseConnection;
+import com.computec.modelo.Categoria;
 import com.computec.modelo.Laptop;
 
 import java.sql.*;
@@ -38,6 +39,7 @@ public class LaptopDAO {
                         rs.getInt("disco_duro_mb"),
                         rs.getInt("ram_gb"),
                         rs.getDouble("precio"),
+                        Categoria.fromString(rs.getString("categoria")),
                         rs.getDouble("pantalla_pulgadas"),
                         rs.getBoolean("es_touch"),
                         rs.getInt("puertos_usb")

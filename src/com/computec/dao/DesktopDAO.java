@@ -1,6 +1,7 @@
 package com.computec.dao;
 
 import com.computec.database.DatabaseConnection;
+import com.computec.modelo.Categoria;
 import com.computec.modelo.Desktop;
 
 import java.sql.*;
@@ -37,6 +38,7 @@ public class DesktopDAO {
                         rs.getInt("disco_duro_mb"),
                         rs.getInt("ram_gb"),
                         rs.getDouble("precio"),
+                        Categoria.fromString(rs.getString("categoria")),
                         rs.getInt("potencia_fuente"),
                         rs.getString("factor_forma")
                 );

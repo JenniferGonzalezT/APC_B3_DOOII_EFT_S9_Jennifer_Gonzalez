@@ -6,17 +6,17 @@ public class Desktop extends Equipo {
 
     public Desktop() {}
 
-    public Desktop(String modelo, String cpu, int discoDuroMb, int ramGb, double precio,
+    public Desktop(String modelo, String cpu, int discoDuroMb, int ramGb, double precio, Categoria categoria,
             int potenciaFuente, String factorForma) {
-        super(modelo, cpu, discoDuroMb, ramGb, precio, "DESKTOP");
+        super(modelo, cpu, discoDuroMb, ramGb, precio, categoria);
         this.potenciaFuente = validarIntPositivo(potenciaFuente, "Potencia fuente");
         this.factorForma = validarStringObligatorio(factorForma, "Factor forma");
     }
 
     public Desktop(int idEquipo, String modelo, String cpu, int discoDuroMb, 
-            int ramGb, double precio,
+            int ramGb, double precio, Categoria categoria,
             int potenciaFuente, String factorForma) {
-        super(idEquipo, modelo, cpu, discoDuroMb, ramGb, precio, "DESKTOP");
+        super(idEquipo, modelo, cpu, discoDuroMb, ramGb, precio, categoria);
         this.potenciaFuente = validarIntPositivo(potenciaFuente, "Potencia fuente");
         this.factorForma = validarStringObligatorio(factorForma, "Factor forma");
     }

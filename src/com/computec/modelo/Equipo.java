@@ -7,28 +7,28 @@ public class Equipo {
     private int discoDuroMb;
     private int ramGb;
     private double precio;
-    private String categoria;
+    private Categoria categoria;
 
     public Equipo() {}
 
-    public Equipo(String modelo, String cpu, int discoDuroMb, int ramGb, double precio, String categoria) {
+    public Equipo(String modelo, String cpu, int discoDuroMb, int ramGb, double precio, Categoria categoria) {
         this.modelo = validarStringObligatorio(modelo, "modelo");
         this.cpu = validarStringObligatorio(cpu, "CPU");
         this.discoDuroMb = validarIntPositivo(discoDuroMb, "Tamaño disco duro");
         this.ramGb = validarIntPositivo(ramGb, "RAM");
         this.precio = validarPrecio(precio);
-        this.categoria = validarCategoria(categoria);
+        this.categoria = categoria;
     }
     
     public Equipo(int idEquipo, String modelo, String cpu, int discoDuroMb, 
-            int ramGb, double precio, String categoria) {
-        this.idEquipo = idEquipo;
+            int ramGb, double precio, Categoria categoria) {
+        this.idEquipo = validarId(idEquipo);
         this.modelo = validarStringObligatorio(modelo,"modelo");
         this.cpu = validarStringObligatorio(cpu, "CPU");
         this.discoDuroMb = validarIntPositivo(discoDuroMb, "Tamaño disco duro");
         this.ramGb = validarIntPositivo(ramGb, "RAM");
         this.precio = validarPrecio(precio);
-        this.categoria = validarCategoria(categoria);
+        this.categoria = categoria;
     }
 
     public int getIdEquipo() {
@@ -36,7 +36,7 @@ public class Equipo {
     }
 
     public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
+        this.idEquipo = validarId(idEquipo);
     }
 
     public String getModelo() {
@@ -79,12 +79,12 @@ public class Equipo {
         this.precio = validarPrecio(precio);
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = validarCategoria(categoria);
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override
@@ -131,5 +131,12 @@ public class Equipo {
             throw new IllegalArgumentException("La categoría no es válida.");
         }
         return c;
+    }
+    
+    private int validarId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("El ID del equipo debe ser un número positivo.");
+        }
+        return id;
     }
 }

@@ -1,5 +1,6 @@
 package com.computec.decorator;
 
+import com.computec.modelo.Categoria;
 import com.computec.modelo.Equipo;
 import org.junit.*;
 
@@ -8,7 +9,7 @@ public class DescuentoTest {
 
     @Before
     public void setUp() {
-        equipoBase = new Equipo("ModeloTest", "Intel i5", 500000, 16, 1000.0, "LAPTOP");
+        equipoBase = new Equipo("ModeloTest", "Intel i5", 500000, 16, 1000.0, Categoria.fromString("LAPTOP"));
     }
 
     @Test

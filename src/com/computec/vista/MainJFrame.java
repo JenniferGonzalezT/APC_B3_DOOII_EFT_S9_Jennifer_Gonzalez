@@ -1,5 +1,6 @@
 package com.computec.vista;
 
+import com.computec.command.*;
 import com.computec.controlador.*;
 import com.computec.modelo.*;
 import java.util.List;
@@ -14,6 +15,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private LaptopControlador laptopControlador = new LaptopControlador();
     private VentaControlador ventaControlador = new VentaControlador();
 
+    private final CommandInvoker invoker = new CommandInvoker();
+    
     /**
      * Creates new form MainJFrame
      */
@@ -29,6 +32,16 @@ public class MainJFrame extends javax.swing.JFrame {
         txtComunaCliente.setText("");
         txtTelefonoCliente.setText("");
         txtCorreoCliente.setText("");
+    }
+    
+    private void limpiarCamposEquipo() {
+        txtIdEquipo.setText("");
+        txtModeloEquipo.setText("");
+        txtCpuEquipo.setText("");
+        txtDiscoDuroEquipo.setText("");
+        txtRamEquipo.setText("");
+        txtPrecioEquipo.setText("");
+        cmbCategoriaEquipo.setSelectedIndex(0);        
     }
 
     /**
@@ -578,7 +591,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         etqCamposEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
         etqCamposEquipo.setForeground(new java.awt.Color(153, 153, 153));
-        etqCamposEquipo.setText("* Todos los campos son obligatorios para Agregar y Editar.");
+        etqCamposEquipo.setText("* Todos los campos son obligatorios para Agregar (menos ID) y Editar.");
 
         txtModeloEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
         txtModeloEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -601,6 +614,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtPrecioEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
 
         cmbCategoriaEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        cmbCategoriaEquipo.setModel(new javax.swing.DefaultComboBoxModel<>(Categoria.values()));
         cmbCategoriaEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaEquipoActionPerformed(evt);
@@ -645,7 +659,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_FormEquipoLayout.setVerticalGroup(
             jPanel_FormEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_FormEquipoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel_FormEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqIdEquipo)
                     .addComponent(txtIdEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -673,7 +686,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_FormEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqCategoriaEquipo)
                     .addComponent(cmbCategoriaEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(etqCamposEquipo))
         );
 
@@ -793,7 +806,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesEquiposLayout.setHorizontalGroup(
             jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesEquiposLayout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarIdEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -997,27 +1010,110 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDiscoDuroEquipoActionPerformed
 
     private void btnAgregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEquipoActionPerformed
-        // TODO add your handling code here:
+        try {
+            String modelo = txtModeloEquipo.getText().trim();
+            String cpu = txtCpuEquipo.getText().trim();
+            int discoDuro = Integer.parseInt(txtDiscoDuroEquipo.getText().trim());
+            int ram = Integer.parseInt(txtRamEquipo.getText().trim());
+            double precio = Double.parseDouble(txtPrecioEquipo.getText().trim());
+            String categoria = cmbCategoriaEquipo.getSelectedItem().toString();
+            
+            Equipo nuevo = new Equipo(modelo, cpu, discoDuro, ram, precio, Categoria.fromString(categoria));
+
+            // Crear y ejecutar comando
+            Command agregarCmd = new AgregarEquipoCommand(equipoControlador, nuevo);
+            invoker.run(agregarCmd);
+
+            JOptionPane.showMessageDialog(this, "Equipo agregado correctamente.");
+            limpiarCamposEquipo();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al agregar equipo: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnAgregarEquipoActionPerformed
 
     private void btnEditarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEquipoActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(txtIdEquipo.getText().trim());
+            String modelo = txtModeloEquipo.getText().trim();
+            String cpu = txtCpuEquipo.getText().trim();
+            int discoDuro = Integer.parseInt(txtDiscoDuroEquipo.getText().trim());
+            int ram = Integer.parseInt(txtRamEquipo.getText().trim());
+            double precio = Double.parseDouble(txtPrecioEquipo.getText().trim());
+            String categoria = cmbCategoriaEquipo.getSelectedItem().toString();
+
+            Equipo actualizado = new Equipo(id, modelo, cpu, discoDuro, ram, precio, Categoria.fromString(categoria));
+
+            Command editarCmd = new EditarEquipoCommand(equipoControlador, actualizado);
+            invoker.run(editarCmd);
+
+            JOptionPane.showMessageDialog(this, "Equipo actualizado correctamente.");
+            limpiarCamposEquipo();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar equipo: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnEditarEquipoActionPerformed
 
     private void btnEliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEquipoActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(txtIdEquipo.getText().trim());
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar equipo con ID " + id + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                Command eliminarCmd = new EliminarEquipoCommand(equipoControlador, id);
+                invoker.run(eliminarCmd);
+
+                JOptionPane.showMessageDialog(this, "Equipo eliminado correctamente.");
+                limpiarCamposEquipo();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar equipo: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnEliminarEquipoActionPerformed
 
     private void btnListarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEquipoActionPerformed
-        // TODO add your handling code here:
+        try {
+            Command listarCmd = new ListarEquiposCommand(equipoControlador);
+            invoker.run(listarCmd);
+
+            List<Equipo> lista = equipoControlador.listar();
+            DefaultTableModel modelo = (DefaultTableModel) tblEquipos.getModel();
+            modelo.setRowCount(0);
+
+            for (Equipo e : lista) {
+                modelo.addRow(new Object[]{
+                    e.getIdEquipo(), e.getModelo(), e.getCpu(), e.getDiscoDuroMb(), e.getRamGb(), e.getPrecio(), e.getCategoria()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al listar equipos: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnListarEquipoActionPerformed
 
     private void btnBuscarIdEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIdEquipoActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(txtIdEquipo.getText().trim());
+            BuscarEquipoPorIdCommand buscarCmd = new BuscarEquipoPorIdCommand(equipoControlador, id);
+            invoker.run(buscarCmd);
+
+            Equipo equipo = buscarCmd.getResultado();
+
+            if (equipo != null) {
+                txtModeloEquipo.setText(equipo.getModelo());
+                txtCpuEquipo.setText(equipo.getCpu());
+                txtDiscoDuroEquipo.setText(String.valueOf(equipo.getDiscoDuroMb()));
+                txtRamEquipo.setText(String.valueOf(equipo.getRamGb()));
+                txtPrecioEquipo.setText(String.valueOf(equipo.getPrecio()));
+                cmbCategoriaEquipo.setSelectedItem(equipo.getCategoria());
+            } else {
+                JOptionPane.showMessageDialog(this, "Equipo no encontrado.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al buscar equipo: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarIdEquipoActionPerformed
 
     private void btnLimpiarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarEquipoActionPerformed
-        // TODO add your handling code here:
+        limpiarCamposEquipo();
     }//GEN-LAST:event_btnLimpiarEquipoActionPerformed
 
     private void cmbCategoriaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaEquipoActionPerformed
@@ -1082,7 +1178,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnListarEquipo;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVentas;
-    private javax.swing.JComboBox<String> cmbCategoriaEquipo;
+    private javax.swing.JComboBox<Categoria> cmbCategoriaEquipo;
     private javax.swing.JLabel etqBienvenida;
     private javax.swing.JLabel etqCamposCliente;
     private javax.swing.JLabel etqCamposEquipo;

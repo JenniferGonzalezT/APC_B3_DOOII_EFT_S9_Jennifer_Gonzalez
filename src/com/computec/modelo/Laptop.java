@@ -7,18 +7,18 @@ public class Laptop extends Equipo {
 
     public Laptop() {}
 
-    public Laptop(String modelo, String cpu, int discoDuroMb, int ramGb, double precio,
+    public Laptop(String modelo, String cpu, int discoDuroMb, int ramGb, double precio, Categoria categoria,
             double pantallaPulgadas, boolean esTouch, int puertosUsb) {
-        super(modelo, cpu, discoDuroMb, ramGb, precio, "LAPTOP");
+        super(modelo, cpu, discoDuroMb, ramGb, precio, categoria);
         this.pantallaPulgadas = validarDoublePositivo(pantallaPulgadas, "Tamaño pantalla (pulgadas)");
         this.esTouch = esTouch;
         this.puertosUsb = validarIntPositivo(puertosUsb, "Puertos USB");
     }
 
     public Laptop(int idEquipo, String modelo, String cpu, int discoDuroMb,
-            int ramGb, double precio,
+            int ramGb, double precio, Categoria categoria,
             double pantallaPulgadas, boolean esTouch, int puertosUsb) {
-        super(idEquipo, modelo, cpu, discoDuroMb, ramGb, precio, "LAPTOP");
+        super(idEquipo, modelo, cpu, discoDuroMb, ramGb, precio, categoria);
         this.pantallaPulgadas = validarDoublePositivo(pantallaPulgadas, "Tamaño pantalla (pulgadas)");
         this.esTouch = esTouch;
         this.puertosUsb = validarIntPositivo(puertosUsb, "Puertos USB");

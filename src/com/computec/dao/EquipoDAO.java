@@ -1,6 +1,7 @@
 package com.computec.dao;
 
 import com.computec.database.DatabaseConnection;
+import com.computec.modelo.Categoria;
 import com.computec.modelo.Equipo;
 
 import java.sql.*;
@@ -17,7 +18,7 @@ public class EquipoDAO {
             cs.setInt(3, equipo.getDiscoDuroMb());
             cs.setInt(4, equipo.getRamGb());
             cs.setDouble(5, equipo.getPrecio());
-            cs.setString(6, equipo.getCategoria());
+            cs.setString(6, equipo.getCategoria().getNombre());
 
             cs.executeUpdate();
         } catch (SQLException e) {
@@ -40,7 +41,7 @@ public class EquipoDAO {
                         rs.getInt("disco_duro_mb"),
                         rs.getInt("ram_gb"),
                         rs.getDouble("precio"),
-                        rs.getString("categoria")
+                        Categoria.fromString(rs.getString("categoria"))
                 );
                 equipos.add(e);
             }
@@ -60,7 +61,7 @@ public class EquipoDAO {
             cs.setInt(4, equipo.getDiscoDuroMb());
             cs.setInt(5, equipo.getRamGb());
             cs.setDouble(6, equipo.getPrecio());
-            cs.setString(7, equipo.getCategoria());
+            cs.setString(7, equipo.getCategoria().getNombre());
 
             cs.executeUpdate();
         } catch (SQLException e) {
