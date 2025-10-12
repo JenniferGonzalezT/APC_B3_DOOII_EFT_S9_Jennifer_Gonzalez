@@ -11,6 +11,11 @@ public class Venta {
     
     public Venta() {}
     
+    public Venta(Cliente cliente, Equipo equipo) {
+        this.cliente = validarCliente(cliente);
+        this.equipo = validarEquipo(equipo);
+    }
+    
     public Venta(Cliente cliente, Equipo equipo, LocalDateTime fechaVenta) {
         this.cliente = validarCliente(cliente);
         this.equipo = validarEquipo(equipo);

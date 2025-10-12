@@ -4,6 +4,7 @@ import com.computec.command.*;
 import com.computec.controlador.*;
 import com.computec.database.DatabaseConnection;
 import com.computec.modelo.*;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +26,12 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         estadoConexionDB();
+        btnCargarEquiposVentaActionPerformed(null);
         cmbCategoriaEquipo.setSelectedIndex(-1);
+        cmbEquiposVenta.setSelectedIndex(-1);
+        btnListarClienteActionPerformed(null);
+        btnListarEquipoActionPerformed(null);
+        btnListarVentasActionPerformed(null);
     }
     
     private void estadoConexionDB() {
@@ -53,7 +59,11 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     private void limpiarCamposVenta() {
-               
+        txtRutVenta.setText("");
+        txtNombreVenta.setText("");
+        txtIdVenta.setText("");
+        txtFechaVenta.setText("");
+        cmbEquiposVenta.setSelectedIndex(-1); 
     }
 
     /**
@@ -134,15 +144,17 @@ public class MainJFrame extends javax.swing.JFrame {
         etqRutVenta = new javax.swing.JLabel();
         etqNombreVenta = new javax.swing.JLabel();
         etqEquipoVenta = new javax.swing.JLabel();
-        etqIdVenta = new javax.swing.JLabel();
         txtRutVenta = new javax.swing.JTextField();
         txtNombreVenta = new javax.swing.JTextField();
-        txtEquipoVenta = new javax.swing.JTextField();
         txtIdVenta = new javax.swing.JTextField();
         etqFechaVenta = new javax.swing.JLabel();
         txtFechaVenta = new javax.swing.JTextField();
+        cmbEquiposVenta = new javax.swing.JComboBox<>();
+        etqIdVenta = new javax.swing.JLabel();
+        etqInfoAgregar = new javax.swing.JLabel();
+        etqInfoEliminar = new javax.swing.JLabel();
         jScrollPane_TablaVentas = new javax.swing.JScrollPane();
-        tblClientes1 = new javax.swing.JTable();
+        tblVentas = new javax.swing.JTable();
         jPanel_BotonesVentas = new javax.swing.JPanel();
         btnAgregarVenta = new javax.swing.JButton();
         btnEditarVenta = new javax.swing.JButton();
@@ -150,6 +162,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnListarVentas = new javax.swing.JButton();
         btnBuscarRutVenta = new javax.swing.JButton();
         btnLimpiarVenta = new javax.swing.JButton();
+        btnCargarEquiposVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gestión Computec");
@@ -227,23 +240,23 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesLayout.setHorizontalGroup(
             jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesLayout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101))
+                .addGap(148, 148, 148))
         );
         jPanel_BotonesLayout.setVerticalGroup(
             jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesLayout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
+                .addContainerGap(226, Short.MAX_VALUE)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(189, 189, 189))
+                .addGap(204, 204, 204))
         );
 
         javax.swing.GroupLayout jPanel_InicioLayout = new javax.swing.GroupLayout(jPanel_Inicio);
@@ -491,15 +504,15 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesClientesLayout.setHorizontalGroup(
             jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_BotonesClientesLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(85, 85, 85)
                 .addGroup(jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarRutCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                    .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel_BotonesClientesLayout.setVerticalGroup(
             jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,8 +553,8 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_PrincipalClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_PrincipalClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_BotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_FormCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel_FormCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_BotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane_TablaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -824,7 +837,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesEquiposLayout.setHorizontalGroup(
             jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesEquiposLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(133, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarIdEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -832,7 +845,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(btnEliminarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAgregarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+                .addGap(117, 117, 117))
         );
         jPanel_BotonesEquiposLayout.setVerticalGroup(
             jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -877,7 +890,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jPanel_FormEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_BotonesEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_TablaEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addComponent(jScrollPane_TablaEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInicioEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -928,15 +941,17 @@ public class MainJFrame extends javax.swing.JFrame {
         etqEquipoVenta.setForeground(new java.awt.Color(255, 255, 255));
         etqEquipoVenta.setText("Equipo");
 
-        etqIdVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
-        etqIdVenta.setForeground(new java.awt.Color(255, 255, 255));
-        etqIdVenta.setText("ID Venta");
+        txtRutVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRutVentaActionPerformed(evt);
+            }
+        });
 
         txtNombreVenta.setEditable(false);
 
-        txtEquipoVenta.addActionListener(new java.awt.event.ActionListener() {
+        txtIdVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEquipoVentaActionPerformed(evt);
+                txtIdVentaActionPerformed(evt);
             }
         });
 
@@ -944,28 +959,52 @@ public class MainJFrame extends javax.swing.JFrame {
         etqFechaVenta.setForeground(new java.awt.Color(255, 255, 255));
         etqFechaVenta.setText("Fecha Venta");
 
+        txtFechaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaVentaActionPerformed(evt);
+            }
+        });
+
+        etqIdVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqIdVenta.setForeground(new java.awt.Color(255, 255, 255));
+        etqIdVenta.setText("ID Venta");
+
+        etqInfoAgregar.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqInfoAgregar.setForeground(new java.awt.Color(153, 153, 153));
+        etqInfoAgregar.setText("* Para agregar venta: Ingrese RUT cliente -> Busquelo (opcional) -> Eliga un equipo -> Agregar");
+
+        etqInfoEliminar.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqInfoEliminar.setForeground(new java.awt.Color(153, 153, 153));
+        etqInfoEliminar.setText("* Para elimianr venta: Ingrese Ingrese ID Venta -> Eliminar");
+
         javax.swing.GroupLayout jPanel_FormVentasLayout = new javax.swing.GroupLayout(jPanel_FormVentas);
         jPanel_FormVentas.setLayout(jPanel_FormVentasLayout);
         jPanel_FormVentasLayout.setHorizontalGroup(
             jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(etqIdVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqEquipoVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqNombreVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(etqRutVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etqFechaVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtIdVenta)
-                    .addComponent(txtNombreVenta)
-                    .addComponent(txtEquipoVenta)
                     .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
-                        .addComponent(txtRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtFechaVenta))
-                .addGap(122, 122, 122))
+                        .addComponent(etqInfoAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
+                        .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(etqEquipoVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(etqNombreVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(etqRutVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(etqFechaVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(etqIdVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRutVenta)
+                            .addComponent(txtNombreVenta)
+                            .addComponent(txtIdVenta)
+                            .addComponent(txtFechaVenta)
+                            .addComponent(cmbEquiposVenta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(119, 119, 119))
+                    .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
+                        .addComponent(etqInfoEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel_FormVentasLayout.setVerticalGroup(
             jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -980,7 +1019,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqEquipoVenta)
-                    .addComponent(txtEquipoVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbEquiposVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqIdVenta)
@@ -989,17 +1028,21 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etqFechaVenta)
                     .addComponent(txtFechaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(etqInfoAgregar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etqInfoEliminar)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jScrollPane_TablaVentas.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane_TablaVentas.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane_TablaVentas.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
 
-        tblClientes1.setBackground(new java.awt.Color(255, 255, 255));
-        tblClientes1.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
-        tblClientes1.setForeground(new java.awt.Color(0, 0, 0));
-        tblClientes1.setModel(new javax.swing.table.DefaultTableModel(
+        tblVentas.setBackground(new java.awt.Color(255, 255, 255));
+        tblVentas.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
+        tblVentas.setForeground(new java.awt.Color(0, 0, 0));
+        tblVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1015,7 +1058,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane_TablaVentas.setViewportView(tblClientes1);
+        jScrollPane_TablaVentas.setViewportView(tblVentas);
 
         jPanel_BotonesVentas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1103,36 +1146,59 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCargarEquiposVenta.setBackground(new java.awt.Color(0, 51, 153));
+        btnCargarEquiposVenta.setFont(new java.awt.Font("Eras Demi ITC", 0, 14)); // NOI18N
+        btnCargarEquiposVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnCargarEquiposVenta.setText("CARGAR EQUIPOS");
+        btnCargarEquiposVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCargarEquiposVenta.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnCargarEquiposVenta.setMinimumSize(new java.awt.Dimension(170, 35));
+        btnCargarEquiposVenta.setPreferredSize(new java.awt.Dimension(170, 35));
+        btnCargarEquiposVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarEquiposVentaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_BotonesVentasLayout = new javax.swing.GroupLayout(jPanel_BotonesVentas);
         jPanel_BotonesVentas.setLayout(jPanel_BotonesVentasLayout);
         jPanel_BotonesVentasLayout.setHorizontalGroup(
             jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesVentasLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(btnCargarEquiposVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnListarVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(42, 42, 42))
+                    .addComponent(btnAgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
         jPanel_BotonesVentasLayout.setVerticalGroup(
             jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
-                .addComponent(btnAgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGroup(jPanel_BotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnBuscarRutVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCargarEquiposVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel_BotonesVentasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnAgregarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnListarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimpiarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel_PrincipalVentasLayout = new javax.swing.GroupLayout(jPanel_PrincipalVentas);
@@ -1159,7 +1225,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel_PrincipalVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel_BotonesVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_FormVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jScrollPane_TablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInicioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1223,6 +1289,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Cliente agregado correctamente.");
             limpiarCamposCliente();
+            btnListarClienteActionPerformed(null);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al agregar cliente: " + e.getMessage());
         }
@@ -1246,6 +1313,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Cliente actualizado correctamente.");
             limpiarCamposCliente();
+            btnListarClienteActionPerformed(null);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al actualizar cliente: " + e.getMessage());
         }
@@ -1263,6 +1331,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 clienteControlador.eliminar(rut);
                 JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
                 limpiarCamposCliente();
+                btnListarClienteActionPerformed(null);
             }
         }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
@@ -1323,6 +1392,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Equipo agregado correctamente.");
             limpiarCamposEquipo();
+            btnListarEquipoActionPerformed(null);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al agregar equipo: " + e.getMessage());
         }
@@ -1345,6 +1415,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Equipo actualizado correctamente.");
             limpiarCamposEquipo();
+            btnListarEquipoActionPerformed(null);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al actualizar equipo: " + e.getMessage());
         }
@@ -1361,6 +1432,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(this, "Equipo eliminado correctamente.");
                 limpiarCamposEquipo();
+                btnListarEquipoActionPerformed(null);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al eliminar equipo: " + e.getMessage());
@@ -1422,11 +1494,30 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtModeloEquipoActionPerformed
 
     private void btnInicioVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioVentaActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane_PanelPrincipal.setSelectedIndex(0);
     }//GEN-LAST:event_btnInicioVentaActionPerformed
 
     private void btnAgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVentaActionPerformed
-        // TODO add your handling code here:
+        String rut = txtRutVenta.getText().trim();
+        String modelo = (String) cmbEquiposVenta.getSelectedItem();
+
+        if (rut.isEmpty() || modelo == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar cliente y equipo.");
+            return;
+        }
+
+        Cliente cliente = clienteControlador.buscarClientePorRut(rut);
+        Equipo equipo = equipoControlador.buscarEquipoPorModelo(modelo);
+
+        if (cliente == null || equipo == null) {
+            JOptionPane.showMessageDialog(this, "Datos inválidos.");
+            return;
+        }
+        
+        ventaControlador.insertar(new Venta(cliente, equipo));
+
+        JOptionPane.showMessageDialog(this, "Venta registrada correctamente.");
+        btnListarVentasActionPerformed(null);
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
     private void btnEditarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarVentaActionPerformed
@@ -1434,11 +1525,72 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarVentaActionPerformed
 
     private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
-        // TODO add your handling code here:
+        String textoId = txtIdVenta.getText().trim();
+
+        if (textoId.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Por favor, ingresa el ID de la venta que deseas eliminar.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            int idVenta = Integer.parseInt(textoId);
+
+            int confirmacion = JOptionPane.showConfirmDialog(this,
+                    "¿Estás seguro de eliminar la venta con ID " + idVenta + "?",
+                    "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                ventaControlador.eliminar(idVenta);
+                JOptionPane.showMessageDialog(this,
+                        "Venta eliminada correctamente.",
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                btnListarVentasActionPerformed(null);
+                txtIdVenta.setText("");
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                    "El ID debe ser un número entero válido.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error al eliminar la venta: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
 
     private void btnListarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarVentasActionPerformed
-        // TODO add your handling code here:
+        try {
+            List<Venta> listaVentas = ventaControlador.listar();
+
+            // 2. Crear modelo de tabla
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID Venta");
+            modelo.addColumn("Cliente");
+            modelo.addColumn("Equipo");
+            modelo.addColumn("Fecha Venta");
+            modelo.addColumn("Precio");
+
+            for (Venta v : listaVentas) {
+                modelo.addRow(new Object[]{
+                    v.getIdVenta(),
+                    v.getCliente().getRutCliente() + " " + v.getCliente().getNombreCompleto(),
+                    v.getEquipo().getModelo(),
+                    v.getFechaVenta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")),
+                    String.format("$%.2f", v.getEquipo().getPrecio())
+                });
+            }
+
+            tblVentas.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error al listar las ventas: " + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnListarVentasActionPerformed
 
     private void btnBuscarRutVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRutVentaActionPerformed
@@ -1453,12 +1605,28 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarRutVentaActionPerformed
 
     private void btnLimpiarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarVentaActionPerformed
-        // TODO add your handling code here:
+        limpiarCamposVenta();
     }//GEN-LAST:event_btnLimpiarVentaActionPerformed
 
-    private void txtEquipoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEquipoVentaActionPerformed
+    private void btnCargarEquiposVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarEquiposVentaActionPerformed
+        cmbEquiposVenta.removeAllItems();
+        List<Equipo> equipos = equipoControlador.listar();
+        for (Equipo eq : equipos) {
+            cmbEquiposVenta.addItem(eq.getModelo());
+        }
+    }//GEN-LAST:event_btnCargarEquiposVentaActionPerformed
+
+    private void txtIdVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEquipoVentaActionPerformed
+    }//GEN-LAST:event_txtIdVentaActionPerformed
+
+    private void txtFechaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaVentaActionPerformed
+
+    private void txtRutVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRutVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1502,6 +1670,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarIdEquipo;
     private javax.swing.JButton btnBuscarRutCliente;
     private javax.swing.JButton btnBuscarRutVenta;
+    private javax.swing.JButton btnCargarEquiposVenta;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEditarCliente;
     private javax.swing.JButton btnEditarEquipo;
@@ -1521,6 +1690,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnListarVentas;
     private javax.swing.JButton btnVentas;
     private javax.swing.JComboBox<Categoria> cmbCategoriaEquipo;
+    private javax.swing.JComboBox<String> cmbEquiposVenta;
     private javax.swing.JLabel etqBienvenida;
     private javax.swing.JLabel etqCamposCliente;
     private javax.swing.JLabel etqCamposEquipo;
@@ -1534,6 +1704,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel etqFechaVenta;
     private javax.swing.JLabel etqIdEquipo;
     private javax.swing.JLabel etqIdVenta;
+    private javax.swing.JLabel etqInfoAgregar;
+    private javax.swing.JLabel etqInfoEliminar;
     private javax.swing.JLabel etqModeloEquipo;
     private javax.swing.JLabel etqNombreCliente;
     private javax.swing.JLabel etqNombreVenta;
@@ -1562,14 +1734,13 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane_TablaVentas;
     private javax.swing.JTabbedPane jTabbedPane_PanelPrincipal;
     private javax.swing.JTable tblClientes;
-    private javax.swing.JTable tblClientes1;
     private javax.swing.JTable tblEquipos;
+    private javax.swing.JTable tblVentas;
     private javax.swing.JTextField txtComunaCliente;
     private javax.swing.JTextField txtCorreoCliente;
     private javax.swing.JTextField txtCpuEquipo;
     private javax.swing.JTextField txtDireccionCliente;
     private javax.swing.JTextField txtDiscoDuroEquipo;
-    private javax.swing.JTextField txtEquipoVenta;
     private javax.swing.JTextField txtFechaVenta;
     private javax.swing.JTextField txtIdEquipo;
     private javax.swing.JTextField txtIdVenta;

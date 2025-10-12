@@ -105,4 +105,30 @@ public class EquipoDAO {
         }
         return equipo;
     }
+    
+    public Equipo buscarEquipoPorModelo(String modelo) {
+        Equipo equipo = null;
+        String sql = "{CALL sp_equipo_buscar_por_modelo (?)}";
+
+        try (CallableStatement cs = DatabaseConnection.getInstance().getConnection().prepareCall(sql)) {
+
+            cs.setString(1, modelo);
+
+            try (ResultSet rs = cs.executeQuery()) {
+                if (rs.next()) {
+                    equipo = new Equipo();
+                    equipo.setIdEquipo(rs.getInt("id_equipo"));
+                    equipo.setModelo(rs.getString("modelo"));
+                    equipo.setCpu(rs.getString("cpu"));
+                    equipo.setDiscoDuroMb(rs.getInt("disco_duro_mb"));
+                    equipo.setRamGb(rs.getInt("ram_gb"));
+                    equipo.setPrecio(rs.getDouble("precio"));
+                    equipo.setCategoria(Categoria.fromString(rs.getString("categoria")));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al buscar ID Equipo: " + e.getMessage());
+        }
+        return equipo;
+    }
 }
