@@ -90,12 +90,10 @@ public class VentaDAO {
             try (ResultSet rs = cs.executeQuery()) {
                 if (rs.next()) {
                     Cliente cliente = new Cliente();
-                    cliente.setNombreCompleto(rs.getString("cliente"));
                     cliente.setRutCliente(rs.getString("rut_cliente"));
 
                     Equipo equipo = new Equipo();
-                    equipo.setModelo(rs.getString("equipo"));
-                    equipo.setPrecio(rs.getDouble("precio"));
+                    equipo.setIdEquipo(rs.getInt("id_equipo"));
 
                     venta = new Venta(
                             cliente,
