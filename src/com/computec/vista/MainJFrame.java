@@ -249,7 +249,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesLayout.setVerticalGroup(
             jPanel_BotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesLayout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
+                .addContainerGap(256, Short.MAX_VALUE)
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,7 +319,7 @@ public class MainJFrame extends javax.swing.JFrame {
         etqTelefonoCliente.setForeground(new java.awt.Color(255, 255, 255));
         etqTelefonoCliente.setText("Teléfono");
 
-        etqCamposCliente.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqCamposCliente.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
         etqCamposCliente.setForeground(new java.awt.Color(153, 153, 153));
         etqCamposCliente.setText("* Todos los campos son obligatorios para Agregar y Editar.");
 
@@ -511,7 +511,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel_BotonesClientesLayout.setVerticalGroup(
             jPanel_BotonesClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,7 +618,7 @@ public class MainJFrame extends javax.swing.JFrame {
         etqCategoriaEquipo.setForeground(new java.awt.Color(255, 255, 255));
         etqCategoriaEquipo.setText("Categoría");
 
-        etqCamposEquipo.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqCamposEquipo.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
         etqCamposEquipo.setForeground(new java.awt.Color(153, 153, 153));
         etqCamposEquipo.setText("* Todos los campos menos ID son obligatorios para Agregar.");
 
@@ -836,7 +836,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel_BotonesEquiposLayout.setHorizontalGroup(
             jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BotonesEquiposLayout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addGroup(jPanel_BotonesEquiposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscarIdEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -889,7 +889,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jPanel_FormEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_BotonesEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_TablaEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                .addComponent(jScrollPane_TablaEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInicioEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -975,11 +975,11 @@ public class MainJFrame extends javax.swing.JFrame {
         etqIdVenta.setForeground(new java.awt.Color(255, 255, 255));
         etqIdVenta.setText("ID Venta");
 
-        etqInfoAgregar.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqInfoAgregar.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
         etqInfoAgregar.setForeground(new java.awt.Color(153, 153, 153));
         etqInfoAgregar.setText("* Para agregar venta: Ingrese RUT cliente -> Busquelo (opcional) -> Eliga un equipo -> AGREGAR");
 
-        etqInfoEliminar.setFont(new java.awt.Font("Eras Demi ITC", 0, 13)); // NOI18N
+        etqInfoEliminar.setFont(new java.awt.Font("Eras Medium ITC", 0, 13)); // NOI18N
         etqInfoEliminar.setForeground(new java.awt.Color(153, 153, 153));
         etqInfoEliminar.setText("* Para eliminar venta: Ingrese ID Venta -> ELIMINAR");
 
@@ -991,7 +991,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
-                        .addComponent(etqInfoAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etqInfoAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel_FormVentasLayout.createSequentialGroup()
                         .addGroup(jPanel_FormVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1512,6 +1512,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Venta registrada correctamente.");
         btnListarVentasActionPerformed(null);
+        limpiarCamposVenta();
     }//GEN-LAST:event_btnAgregarVentaActionPerformed
 
     private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
@@ -1538,7 +1539,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
                 btnListarVentasActionPerformed(null);
-                txtIdVenta.setText("");
+                limpiarCamposVenta();
 
             }
         } catch (NumberFormatException e) {
