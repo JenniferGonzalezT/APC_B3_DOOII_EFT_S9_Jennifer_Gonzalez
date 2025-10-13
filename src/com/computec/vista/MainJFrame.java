@@ -1613,7 +1613,7 @@ public class MainJFrame extends javax.swing.JFrame {
             Venta v = ventaControlador.buscarVentaPorId(idVenta);
             if (v != null) {
                 txtRutVenta.setText(v.getCliente().getRutCliente());
-                txtNombreVenta.setText(v.getCliente().getNombreCompleto());
+                btnBuscarRutVentaActionPerformed(null);
                 txtFechaVenta.setText(v.getFechaVenta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
                 cmbEquiposVenta.setSelectedItem(v.getEquipo().getModelo());
             } else {
